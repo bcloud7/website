@@ -82,6 +82,7 @@ export default () => {
         header_light: 'light',
         header_feature: 'feature',
         header_about: 'about',
+        header_news: 'News',
         header_testimonials: 'testimonials',
         header_projects: 'projects',
         header_carousel: 'projects',

@@ -1,37 +1,84 @@
 <template>
-  <div>
+  <div class="blog-root">
     <div class="main-wrap">
       <main-header />
-      <div class="container-wrap">
-        <section id="home">
-          <banner />
-        </section>
-
-        <section id="about" :class="isMobile ? 'space-top-short' : 'space-top'">
-          <features />
-          <story />
-        </section>
-
-        <section id="carousel" :class="isMobile ? 'space-top-short' : 'space-top'">
-          <Carousel />
-          <benefit />
-        </section>
-
-        <br />
-
-        <section id="faq" class="space-top-short">
-          <faq />
-        </section>
-      </div>
-      <section id="footer">
-        <footer-with-deco />
-      </section>
+      <v-container :class="{ fixed: isDesktop }">
+        <Nuxt />
+      </v-container>
     </div>
+    <section id="footer">
+      <footer-with-deco />
+    </section>
   </div>
 </template>
 
+
 <style scoped lang="scss">
 @import '~/assets/styles';
+
+.blog-root {
+  background: linear-gradient(
+    -45deg,
+    $palette-primary-main 20%,
+    $palette-primary-dark 70%
+  );
+  position: relative;
+  padding: spacing(25, 0, 15);
+  @include breakpoints-up(lg) {
+    height: 200px;
+    padding: spacing(30, 0, 5);
+  }
+  @include breakpoints-down(xs) {
+    padding: spacing(25, 0, 10);
+    position: relative;
+  }
+}
+
+.main-wrap {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  @include palette-text-primary;
+  .theme--dark & {
+    background-color: $dark-background-default;
+  }
+  .theme--light & {
+    background-color: $light-background-paper;
+  }
+}
+
+.decoration {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  @include left(0);
+  overflow: hidden;
+  clip: rect(0, auto, auto, 0);
+  svg {
+    fill: $palette-secondary-main;
+    opacity: 0.15;
+    position: fixed;
+    top: 0;
+  }
+}
+
+.left-deco {
+  left: 0;
+  right: auto;
+  width: 1200px;
+  height: 1500px;
+  transform: scale(0.8);
+  transform-origin: top left;
+}
+
+.right-deco {
+  left: auto;
+  right: 0;
+  height: 1500px;
+  transform: scale(0.5);
+  transform-origin: top right;
+}
 
 @function section-margin($margin) {
   @return $margin * 20;
@@ -81,25 +128,14 @@
 
 <script>
 import Header from '~/components/Header'
-import Benefit from '~/components/Benefit'
-import Banner from '~/components/Banner'
-import Features from '~/components/Features'
-import Story from '~/components/Story'
-import Faq from '~/components/Faq'
 import FooterWithDeco from '~/components/Footer/FooterWithDeco'
-import Carousel from '~/components/Carousel'
 
 import brand from '~/static/text/brand'
 
 export default {
+  layout: 'blog',
   components: {
     'main-header': Header,
-    Banner,
-    Benefit,
-    Carousel,
-    Features,
-    Story,
-    Faq,
     FooterWithDeco,
   },
   computed: {

@@ -1,15 +1,17 @@
 <template>
-  <div class="blog-root">
-    <div class="main-wrap">
-      <main-header />
-      <v-container :class="{ fixed: isDesktop }">
-        <Nuxt />
-      </v-container>
-    </div>
-    <section id="footer">
-      <footer-with-deco />
-    </section>
-  </div>
+  <v-app>
+    <v-main>
+      <div class="main-wrap">
+        <main-header />
+
+        <div class="container-wrap">
+          <nuxt />
+        </div>
+        <footer-with-deco />
+
+      </div>
+    </v-main>
+  </v-app>
 </template>
 
 
@@ -130,26 +132,36 @@
 import Header from '~/components/Header'
 import FooterWithDeco from '~/components/Footer/FooterWithDeco'
 
-import brand from '~/static/text/brand'
-
 export default {
-  layout: 'blog',
   components: {
     'main-header': Header,
     FooterWithDeco,
   },
-  computed: {
-    isTablet() {
-      return this.$mq === 'mdDown' || this.$mq === 'smDown' || this.$mq === 'xsDown' // eslint-disable-line
-    },
-    isMobile() {
-      return this.$mq === 'smDown' || this.$mq === 'xsDown'
-    },
-  },
-  head() {
+  loading: false,
+  data() {
     return {
-      title: brand.lotus.name + ' - Home Page',
+      show: false,
+      play: false,
     }
+  },
+  mounted: function() {
+    // Preloader and Progress bar setup
+    this.show = true
+    this.play = true
+    this.$nextTick(() => {
+      setTimeout(() => {
+        this.$nuxt.$loading.finish()
+        this.play = false
+      }, 500)
+      this.$nuxt.$loading.start()
+    })
+    const preloader = document.getElementById('preloader')
+    if (preloader !== null || undefined) {
+      preloader.remove()
+    }
+    // RTL initial
+    const rtlURL = document.location.pathname.split('/')[1] === 'ar'
+    this.$vuetify.rtl = rtlURL
   },
 }
 </script>

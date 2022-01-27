@@ -3,7 +3,7 @@
     <figure>
       <img :src="img" alt="thumb">
     </figure>
-    <div class="desc">
+    <!-- <div class="desc">
       <div class="text">
         <p class="type caption">
           {{ $t('lotusLanding.' + type) }}
@@ -13,7 +13,7 @@
       <v-btn small text class="btn">
         {{ $t('lotusLanding.news_readmore') }}
       </v-btn>
-    </div>
+    </div> -->
   </div>
 </template>
 

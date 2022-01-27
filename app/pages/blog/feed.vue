@@ -1,16 +1,28 @@
 <template>
   <div class="main-wrap">
-    <Calculator />
+    <div class="page-wrap pt-16">
+
+
+      <!-- :caption="$t('lotusLanding.features.title')" -->
+      <!-- <title-main
+        caption="Our Articles"
+        align="center"
+        class='use-text-title pt-12'
+        color="primary"
+      >
+      </title-main> -->
+      <Blog />
+    </div>
   </div>
 </template>
 
 <script>
-import Calculator from '~/components/Forms/Calculator'
+import Blog from '~/components/Blog/Blog.vue'
 
 export default {
   layout: 'blog',
   components: {
-    Calculator,
+    Blog,
   },
   computed: {
     isTablet() {

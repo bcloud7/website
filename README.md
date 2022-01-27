@@ -13,6 +13,8 @@ Features:
 
 ## Installation (tested on node >14)
 
+Go to either app or docs folder and run:
+
 ```
 yarn
 ```
@@ -27,8 +29,8 @@ yarn dev
 
 You should avoid developing with Docker as it is
 mostly required for production build and it significantly
-increases the feedback loop for making changes and seeing them.
-(you need to rebuild the container each time after you make a change)
+decreases the feedback loop for making changes and seeing them.
+(you need to rebuild the container each time you make a change)
 
 
 1. Build container
@@ -40,7 +42,7 @@ sudo docker build . -t lotus-nuxt
 2. Run container
 
 ```
-sudo docker run -it -p 8080:8080 lotus-nuxt:latest
+sudo docker run -it -p 8080:8080 -p 8081:8081 lotus-nuxt:latest
 ```
 
 This mode auto redirects to https. Requires SSL certicate to work.
@@ -58,7 +60,7 @@ If still can't reach try commenting out:
 From nginx.confg
 
 You will then be able to visit the app at localhost:8080
-
+and docs at localhost:8081
 
 ## Build for CDN (SSR)
 

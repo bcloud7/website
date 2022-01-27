@@ -1,16 +1,23 @@
 <template>
   <v-app>
-    <v-main>
-      <div class="main-wrap">
-        <main-header />
-
-        <div class="container-wrap">
+    <transition name="fade">
+      <div
+        id="main-wrap"
+        :class="{
+          'page-fadeUp-transition-enter': !show,
+          'page-fadeUp-transition-enter-active': show && play,
+          'page-fadeUp-transition-exit': !play,
+          'transition-enter-done': show
+        }"
+      >
+        <v-main>
+          <main-header />
           <nuxt />
-        </div>
-        <footer-with-deco />
+          <footer-with-deco />
 
+        </v-main>
       </div>
-    </v-main>
+    </transition>
   </v-app>
 </template>
 

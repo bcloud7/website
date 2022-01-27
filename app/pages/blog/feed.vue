@@ -1,8 +1,6 @@
 <template>
   <div class="main-wrap">
-    <main-header/>
-    <Calculator
-    />
+    <Calculator />
   </div>
 </template>
 
@@ -10,7 +8,6 @@
 import Calculator from '~/components/Forms/Calculator'
 
 export default {
-  loading: false,
   layout: 'blog',
   components: {
     Calculator,

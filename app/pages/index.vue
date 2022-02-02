@@ -92,6 +92,7 @@ import Carousel from '~/components/Carousel'
 import brand from '~/static/text/brand'
 
 export default {
+  layout: 'landing',
   components: {
     'main-header': Header,
     Banner,

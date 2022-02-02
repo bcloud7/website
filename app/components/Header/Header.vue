@@ -31,7 +31,7 @@
                 <img style="border-radius: 50%" :src="logo" alt="logo" />
               </nuxt-link>
               <scrollactive v-if="!invert && loaded" tag="span">
-                <a href="#home" class="anchor-link scrollactive-item">
+                <a href="/" class="anchor-link ">
                   <img style="border-radius: 50%" :src="logo" alt="logo" />
                 </a>
               </scrollactive>

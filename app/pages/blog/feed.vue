@@ -20,7 +20,6 @@
 import Blog from '~/components/Blog/Blog.vue'
 
 export default {
-  layout: 'blog',
   components: {
     Blog,
   },
